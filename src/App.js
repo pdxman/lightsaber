@@ -11,16 +11,23 @@ function App() {
 
   //console.log(lightsabers)
 
-  function toggle(){
-    // const update = {on: !prevState.on}
-    setCollection(prevState => [...prevState, {on: !prevState.on}] )
+  // function toggle(){
+  //   setCollection(prevState => [...prevState, {on: !prevState.on}] )
+  // }
+
+  const togglePower = (index) => {
+    const newCollection = [...collection]
+    newCollection[index].on = !newCollection[index].on
+    setCollection(newCollection)
   }
   
-  const showCollection = collection.map(saber => (
+  const showCollection = collection.map((saber, index) => (
     <div className="sabers" key={saber.id}>
       <p>{saber.name}</p>
       <p>{saber.color}</p>
-      <p style={saber.on ? bgRed : bgGreen } onClick={toggle}>{saber.on ? 'WATCH OUT' : 'ITS FINE'}</p>
+      <p style={saber.on ? bgRed : bgGreen} onClick={() => togglePower(index)}>
+        {saber.on ? 'WATCH OUT' : 'ITS FINE'}
+      </p>
     </div>
   ))
 
