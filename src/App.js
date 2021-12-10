@@ -12,11 +12,8 @@ function App() {
   //console.log(lightsabers)
 
   function toggle(){
-    setCollection(prevState => [
-      ({...prevState,
-        on: !prevState.on})
-      ]
-    )
+    // const update = {on: !prevState.on}
+    setCollection(prevState => [...prevState, {on: !prevState.on}] )
   }
   
   const showCollection = collection.map(saber => (
